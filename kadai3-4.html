@@ -24,7 +24,7 @@
 
                 // 配列の内容を項目毎に出力
                 // ここにコードを書く
-                for (key in items){
+                for (key in items){//for文でitemsの内容を表示させる
                     console.log("商品番号:"+items [key].id+",商品名:"+items [key].name+",金額:"+items [key].price+",在庫数:"+items [key].stock);
                 }
                 console.log("");// 空行の出力
@@ -33,13 +33,16 @@
             // 商品購入の関数
             function buyItem(no) {
                 // ここにコードを書く
-                console.log("商品番号:"+no+",商品名:"+items [no-1].name+"を購入します。");
-                if (items [no-1].stock > 0){
-                    items [no-1].stock--;
+                if (1>no || 8<no){//もし商品番号が1より小さいまたは8より大きいなら
+                    console.log(no+"は無効な商品番号です。番号は1～8で指定してください。");
                 }else{
-                    console.log("在庫がありません");
+                    console.log("商品番号:"+no+",商品名:"+items [no-1].name+"を購入します。");//購入宣言
+                    if(items [no-1].stock > 0){//もし在庫が0より大きいなら
+                        items [no-1].stock--;//在庫を-1します
+                    }else{//0より小さいなら
+                        console.log("在庫がありません");//在庫がありませんと表示
+                        }
                     }
-
                 showItemList(); // 商品一覧の表示関数呼び出し
             }
 
@@ -48,6 +51,7 @@
 
             buyItem(5); // 商品購入の関数呼び出し
             buyItem(5); // 商品購入の関数呼び出し
+            buyItem(9);//tesuto
 
         </script>
     </body>
